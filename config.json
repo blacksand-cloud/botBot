@@ -1,0 +1,43 @@
+{
+  "filters": {
+    "min_liquidity_usd": 10000,
+    "max_buy_tax_bps": 500,
+    "max_sell_tax_bps": 500,
+    "min_token_age_days": 7,
+    "allow_verified_only": true,
+    "allowed_chains": ["ethereum", "bsc", "base"],
+    "allowed_base_tokens": ["WETH", "WBNB", "ETH", "USDC", "USDT"],
+    "excluded_dexes": ["unknowndex"],
+    "name_must_not_match_regex": [
+      "(?i)baby.*doge",
+      "(?i)pepe.*inu",
+      "(?i).*\\brug\\b.*",
+      "(?i).*honeypot.*"
+    ]
+  },
+  "coin_blacklist": {
+    "addresses": [
+      "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    ],
+    "symbols": [
+      "SCAM",
+      "RUG"
+    ],
+    "regexes": [
+      "(?i).*\\brug\\b.*",
+      "(?i).*honeypot.*"
+    ]
+  },
+  "developer_blacklist": {
+    "addresses": [
+      "0xabcabcabcabcabcabcabcabcabcabcabcabcab"
+    ],
+    "labels": [
+      "KNOWN_RUGGER_GROUP_X"
+    ],
+    "regexes": [
+      "(?i).*not\\s*audited.*",
+      "(?i).*previously\\s*rug.*"
+    ]
+  }
+}

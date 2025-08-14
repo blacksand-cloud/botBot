@@ -1,0 +1,3 @@
+# Put one token mint/contract per line
+# Example (replace with real mints):
+# So11111111111111111111111111111111111111112

@@ -1,0 +1,37 @@
+app:
+  loop_interval_seconds: 60
+  log_level: INFO
+  # Optional: filter tokens by chains of interest when querying Dexscreener
+  chains: ["solana", "ethereum", "bsc", "base", "arbitrum"]
+
+sources:
+  dexscreener:
+    # Backoff/retry
+    max_retries: 3
+    timeout_seconds: 15
+    # When true, will try /latest/dex/tokens/{tokenAddress} for each token
+    use_token_lookup: true
+  pumpfun:
+    # Pump.fun endpoint is unstable and subject to change; leave empty to disable
+    base_url: ""
+    timeout_seconds: 15
+    enabled: false
+
+thresholds:
+  # Price pump: percentage increase over the window
+  pump_percent_increase: 150  # 150% up from baseline
+  pump_window_minutes: 30
+  # Rug: percentage decrease over the window and liquidity drop
+  rug_percent_drop: 70  # 70% down from peak/baseline
+  rug_liquidity_drop_percent: 60
+  rug_window_minutes: 30
+  # Tier-1 heuristic thresholds
+  tier1_min_liquidity_usd: 500000
+  tier1_min_volume_24h_usd: 2000000
+
+storage:
+  sqlite_path: "/workspace/data/coinbot.sqlite3"
+
+watchlist:
+  # Seed search queries to discover tokens outside of Pump.fun (optional). Dexscreener search is fuzzy.
+  queries: ["pump", "pepe", "doge", "cat"]
